@@ -6,7 +6,7 @@
 /*   By: clcreuso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 20:02:09 by clcreuso          #+#    #+#             */
-/*   Updated: 2017/11/08 14:26:12 by clcreuso         ###   ########.fr       */
+/*   Updated: 2017/11/13 19:53:52 by clcreuso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ void	*ft_memmove(void *d, const void *s, size_t n)
 		while (i++ < n)
 			*(char *)d++ = *(const char *)s++;
 	else
-	{
 		while (n-- > 0)
 			((char *)d)[n] = ((const char *)s)[n];
-	}
 	return (dest);
 }
