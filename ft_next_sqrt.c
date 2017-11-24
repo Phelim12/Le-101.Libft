@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_isascii.c                                     .::    .:/ .      .::   */
+/*   ft_next_sqrt.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:02:22 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:02:22 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:04:58 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:04:58 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isascii(int c)
+int	ft_next_sqrt(int nb)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	int ret;
+
+	while (!(ret = ft_sqrt(nb)))
+		nb++;
+	return (ret);
 }

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clcreuso <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 14:06:00 by clcreuso          #+#    #+#             */
-/*   Updated: 2017/11/13 15:39:35 by clcreuso         ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_strrchr.c                                     .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2017/11/24 22:08:13 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:08:13 by clcreuso    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
-	char	*last;
+	size_t	i;
+	char	*str;
 
-	last = NULL;
-	if (s[0] == 0)
+	str = malloc(sizeof(char*) * ft_strlen(s));
+	if (!s)
 		return (NULL);
-	while (*s)
+	ft_strcpy(str, s);
+	i = ft_strlen(s);
+	str += i;
+	while ((int)i >= 0)
 	{
-		if (*s == (char)c)
-			last = (char *)s;
-		s++;
+		if (*str-- == c)
+			return ((char*)s + i);
+		i--;
 	}
-	if (*s == (char)c)
-		last = (char *)s;
-	return (last);
+	return (NULL);
 }

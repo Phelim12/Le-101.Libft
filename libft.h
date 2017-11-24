@@ -1,13 +1,14 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: clcreuso <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 19:55:40 by clcreuso          #+#    #+#             */
-/*   Updated: 2017/11/13 18:29:27 by clcreuso         ###   ########.fr       */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   libft.h                                          .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2017/11/24 22:08:51 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:08:51 by clcreuso    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -72,6 +73,7 @@ int				ft_strequ(char const *s1, char const *s2);
 int				ft_count_len(const char *s, char c);
 int				ft_strlen(const char *s);
 int				ft_atoi(const char *s);
+int				ft_next_sqrt(int nb);
 int				ft_size_int(int n);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);
@@ -84,6 +86,7 @@ int				ft_isupper(int c);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
 int				ft_lenint(int n);
+int				ft_sqrt(int nb);
 
 /*
 **	The functions returns a size_t .
