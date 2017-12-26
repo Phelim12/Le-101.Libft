@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_count_words.c                                 .::    .:/ .      .::   */
+/*   ft_putstr_fd.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:01:47 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:01:47 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:35 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:35 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_count_words(const char *s, int nb_words, char c)
+void	ft_putstr_fd(const char *s, int fd)
 {
+	if (!s)
+		return ;
 	while (*s)
-		if (*s++ == c)
-			nb_words++;
-	return (nb_words + 2);
+		ft_putchar_fd(*s++, fd);
 }

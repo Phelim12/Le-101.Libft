@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strequ.c                                      .::    .:/ .      .::   */
+/*   ft_next_sqrt.c                                   .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:06:34 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:06:34 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:04:58 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:04:58 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+int		ft_next_sqrt(int nb)
 {
-	if (!s1 || !s2)
-		return (0);
-	return (!ft_strcmp(s1, s2));
+	int ret;
+
+	while (!(ret = ft_sqrt(nb)))
+		nb++;
+	return (ret);
 }

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_next_sqrt.c                                   .::    .:/ .      .::   */
+/*   ft_sqrt.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:04:58 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:04:58 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:48 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:48 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_next_sqrt(int nb)
+int		ft_sqrt(int nb)
 {
-	int ret;
+	int racine;
+	int sqrt;
 
-	while (!(ret = ft_sqrt(nb)))
-		nb++;
-	return (ret);
+	racine = 1;
+	sqrt = 0;
+	while (racine <= nb / 2)
+	{
+		sqrt = racine * racine;
+		if (sqrt == nb)
+		{
+			return (racine);
+		}
+		racine = racine + 1;
+	}
+	return (0);
 }

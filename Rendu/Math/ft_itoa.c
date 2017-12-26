@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_fillstr.c                                     .::    .:/ .      .::   */
+/*   ft_itoa.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:02:02 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:02:02 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:03:05 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:03:05 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_fillstr(char *s, char c)
+char	*ft_itoa(int n)
 {
-	char	*new_s;
-	int		a;
+	char		*ret;
+	int			len;
+	long int	s_n;
 
-	a = 0;
-	new_s = (char *)malloc(sizeof(char) * (ft_count_len(s, c) + 1));
-	while (*s != c && *s != '\0')
-		new_s[a++] = *s++;
-	new_s[a] = '\0';
-	return (new_s);
+	s_n = n;
+	len = ft_ilen(n);
+	ret = (char *)malloc(sizeof(char) * (len + 1));
+	if (!ret)
+		return (0);
+	ret[len--] = '\0';
+	if (!n)
+		ret[len--] = '0';
+	s_n = ABS(s_n);
+	while (s_n)
+	{
+		ret[len--] = (s_n % 10) + '0';
+		s_n /= 10;
+	}
+	if (n < 0)
+		ret[0] = '-';
+	return (ret);
 }

@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putendl_fd.c                                  .::    .:/ .      .::   */
+/*   ft_strmap.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:14 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:14 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:07:13 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:07:13 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char const *s, int fd)
+char	*ft_strmap(const char *s, char (*f)(char))
 {
+	int		a;
+	char	*new;
+
+	a = 0;
 	if (!s)
-		return ;
-	while (*s)
-		ft_putchar_fd(*s++, fd);
-	ft_putchar_fd('\n', fd);
+		return ((char *)s);
+	new = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	if (!new)
+		return (NULL);
+	while (s[a])
+	{
+		new[a] = f(s[a]);
+		a++;
+	}
+	new[a] = '\0';
+	return (new);
 }

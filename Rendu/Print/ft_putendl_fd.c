@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_lenint.c                                      .::    .:/ .      .::   */
+/*   ft_putendl_fd.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:03:12 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:03:12 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:14 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:14 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lenint(int n)
+void	ft_putendl_fd(const char *s, int fd)
 {
-	int	ret;
-
-	ret = 1;
-	if (n < 0)
-		ret++;
-	while ((n) && (n /= 10))
-		ret++;
-	return (ret);
+	if (!s)
+		return ;
+	while (*s)
+		ft_putchar_fd(*s++, fd);
+	ft_putchar_fd('\n', fd);
 }

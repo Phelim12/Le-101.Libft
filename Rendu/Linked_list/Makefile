@@ -17,40 +17,27 @@ CC = gcc
 
 C_FLAGS = -Wall -Wextra -Werror
 
-NAME = libft.a
+INC = ../Includes
 
-INC = Includes/
+NAME = liblst.a
 
-DIR = Char/ Get_next_line/ Linked_list/ Math/ Memory/ Print/ String/
+OBJ = $(SRC:.c=.o)
 
-LST1 = 	Char/libchr.a 			\
-		Get_next_line/libgnl.a 	\
-		Linked_list/liblst.a 	\
-		Math/libmath.a 			\
-	  	Memory/libmem.a 		\
-	  	Print/libprint.a 		\
-	  	String/libstr.a
-
-LST2 =  Get_next_line/libgnl.a 	\
-		Linked_list/liblst.a 	\
-		Math/libmath.a 			\
-	  	Memory/libmem.a 		\
-	  	Print/libprint.a 		\
-	  	String/libstr.a
+SRC = ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstnew.c			
 
 all: $(NAME)
 
-$(NAME):
-	@$(foreach var1 var2 var3,$(DIR) $(LST1) $(LST2),make -C $(var1); cp -r $(var2) $(var3);)
+$(NAME): $(OBJ)
+	@ar rcs $(NAME) $(OBJ)
 	@echo "\033[0;32m✅️    $(NAME) created."
 
+./%.o: ./%.c
+	@$(CC) $(CFLAGS) -I $(INC) -o $@ -c $< 
+
 clean:
-	@$(foreach var,$(DIR),make clean -C $(var);)
-	@echo "\033[0;31m🗑️    Deleting object files." 
+	@rm -f $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)
-	@$(foreach var,$(DIR),make fclean -C $(var);)
-	@echo "\033[0;31m🗑️    Deleting $(NAME) executable." 
 
 re: fclean all

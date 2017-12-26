@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strsub.c                                      .::    .:/ .      .::   */
+/*   get_next_line.h                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:08:32 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:08:32 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/27 20:09:30 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/27 20:09:30 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
+# define BUFF_SIZE 32
 
-	if (!s)
-		return ((char *)s);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (NULL);
-	while (start--)
-		s++;
-	ft_strncpy(str, s, len);
-	str[len] = '\0';
-	return (str);
-}
+# include "libft.h"
+# include <stdlib.h>
+# include <unistd.h>
+
+int		get_next_line(int const fd, char **line);
+
+#endif

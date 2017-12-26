@@ -1,34 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strmapi.c                                     .::    .:/ .      .::   */
+/*   test.c                                           .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:07:17 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:07:17 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/26 19:12:54 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/26 19:12:54 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "Includes/libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+int main(int argc, char const *argv[])
 {
-	unsigned int	a;
-	char			*new;
-
-	a = 0;
-	if (!s)
-		return ((char *)s);
-	new = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
-	if (!new)
-		return (NULL);
-	while (s[a])
-	{
-		new[a] = f(a, s[a]);
-		a++;
-	}
-	new[a] = '\0';
-	return (new);
+	ft_putstr("Salut");
+	return 0;
 }

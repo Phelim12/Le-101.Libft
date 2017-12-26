@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_size_int.c                                    .::    .:/ .      .::   */
+/*   ft_strmapi.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:43 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:43 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:07:17 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:07:17 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_size_int(int n)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int a;
-	int size;
+	unsigned int	a;
+	char			*new;
 
-	a = 1;
-	size = 0;
-	if (n < 0)
+	a = 0;
+	if (!s)
+		return ((char *)s);
+	new = malloc(sizeof(char) * (ft_strlen((char *)s) + 1));
+	if (!new)
+		return (NULL);
+	while (s[a])
 	{
-		n = -n;
-		a = 0;
+		new[a] = f(a, s[a]);
+		a++;
 	}
-	while ((n /= 10) > 1)
-		size++;
-	if (a == 0)
-		return (size + 2);
-	return (size + 1);
+	new[a] = '\0';
+	return (new);
 }

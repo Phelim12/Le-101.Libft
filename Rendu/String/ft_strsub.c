@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_itoa.c                                        .::    .:/ .      .::   */
+/*   ft_strsub.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:03:05 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:03:05 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:08:32 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:08:32 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	char		*ret;
-	int			len;
-	long int	s_n;
+	char	*str;
 
-	s_n = n;
-	len = ft_lenint(n);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (0);
-	ret[len--] = '\0';
-	if (!n)
-		ret[len--] = '0';
-	s_n = ABS(s_n);
-	while (s_n)
-	{
-		ret[len--] = (s_n % 10) + '0';
-		s_n /= 10;
-	}
-	if (n < 0)
-		ret[0] = '-';
-	return (ret);
+	if (!s)
+		return ((char *)s);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (start--)
+		s++;
+	ft_strncpy(str, s, len);
+	str[len] = '\0';
+	return (str);
 }

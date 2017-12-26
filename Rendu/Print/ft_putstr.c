@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_strnequ.c                                     .::    .:/ .      .::   */
+/*   ft_putstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:07:42 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:07:42 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:28 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:28 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+void	ft_putstr(const char *s)
 {
-	if (!s1 || !s2)
-		return (0);
-	return (!ft_strncmp(s1, s2, n));
+	int i;
+
+	i = 0;
+	if (!s)
+		return ;
+	while (*s)
+		ft_putchar(*s++);
 }
