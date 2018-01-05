@@ -13,12 +13,7 @@
 
 #include "libft.h"
 
-size_t	ft_ilen(int n)
+int	ft_ilen(int n)
 {
-	size_t	i;
-
-	i = 1;
-	while (n /= 10)
-		i++;
-	return (i);
+	return (ft_ilen_base(n, 10));
 }

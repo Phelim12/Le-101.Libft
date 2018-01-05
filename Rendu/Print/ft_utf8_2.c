@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
+/*   ft_utf8_2.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:06 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:06 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/12/28 16:34:57 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/12/28 16:34:57 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar_fd(wchar_t w, int fd)
+int	ft_utf8_2(wchar_t w, int fd)
 {
-	if (w >= 0 && w <= 127)
-		return (ft_utf8_1(w, fd));
-	else if (w >= 128 && w <= 2047)
-		return (ft_utf8_2(w, fd));
-	else if (w >= 2048 && w <= 65535)
-		return (ft_utf8_3(w, fd));
-	else if (w >= 65536 && w <= 2097151)
-		return (ft_utf8_4(w, fd));
-	return (0);
+	unsigned char	*tmp;
+	int				ret;
+
+	ret = 0;
+	tmp = (unsigned char *)ft_strnew(2);
+	tmp[0] = ((w >> 6) | 192);
+	tmp[1] = ((w ^ ((w >> 6) << 6)) | 128);
+	while (tmp[ret])
+		write(fd, &tmp[ret++], 1);
+	free(tmp);
+	return (ret);
 }

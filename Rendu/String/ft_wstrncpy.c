@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
+/*   ft_wstrncpy.c                                    .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:06 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:06 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 16:02:17 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 16:02:17 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar_fd(wchar_t w, int fd)
+wchar_t	*ft_wstrncpy(wchar_t *d, const wchar_t *s, size_t n)
 {
-	if (w >= 0 && w <= 127)
-		return (ft_utf8_1(w, fd));
-	else if (w >= 128 && w <= 2047)
-		return (ft_utf8_2(w, fd));
-	else if (w >= 2048 && w <= 65535)
-		return (ft_utf8_3(w, fd));
-	else if (w >= 65536 && w <= 2097151)
-		return (ft_utf8_4(w, fd));
-	return (0);
+	unsigned int cur;
+	unsigned int a;
+
+	a = 0;
+	cur = 0;
+	while (s[cur] && ((a + ft_size_wchar(s[cur])) <= n))
+	{
+		d[cur] = s[cur];
+		a += ft_size_wchar(s[cur]);
+		cur++;
+	}
+	while (a < n)
+	{
+		d[cur] = '\0';
+		a += ft_size_wchar(s[cur]);
+		cur++;
+	}
+	return (d);
 }

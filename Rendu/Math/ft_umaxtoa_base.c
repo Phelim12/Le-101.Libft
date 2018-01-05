@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
+/*   ft_umaxtoa_base.c                                .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:06 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:06 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 18:56:14 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 18:56:14 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar_fd(wchar_t w, int fd)
+char	*ft_umaxtoa_base(uintmax_t nbr, char *base)
 {
-	if (w >= 0 && w <= 127)
-		return (ft_utf8_1(w, fd));
-	else if (w >= 128 && w <= 2047)
-		return (ft_utf8_2(w, fd));
-	else if (w >= 2048 && w <= 65535)
-		return (ft_utf8_3(w, fd));
-	else if (w >= 65536 && w <= 2097151)
-		return (ft_utf8_4(w, fd));
-	return (0);
+	int		i;
+	int		base_size;
+	char	*str;
+
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	i = 0;
+	base_size = ft_strlen(base);
+	str = ft_strnew(ft_umaxlen_base(nbr, base_size) + 1);
+	while (nbr)
+	{
+		str[i++] = base[nbr % base_size];
+		nbr = nbr / base_size;
+	}
+	str[i] = '\0';
+	return (ft_strrev(str));
 }

@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
+/*   ft_atoimax.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:06 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:06 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 14:50:02 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 14:50:02 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar_fd(wchar_t w, int fd)
+intmax_t	ft_atoimax(const char *s)
 {
-	if (w >= 0 && w <= 127)
-		return (ft_utf8_1(w, fd));
-	else if (w >= 128 && w <= 2047)
-		return (ft_utf8_2(w, fd));
-	else if (w >= 2048 && w <= 65535)
-		return (ft_utf8_3(w, fd));
-	else if (w >= 65536 && w <= 2097151)
-		return (ft_utf8_4(w, fd));
-	return (0);
+	intmax_t	nb;
+	int			neg;
+
+	nb = 0;
+	neg = 1;
+	while (ft_isspace(*s) && *s != 0)
+		s++;
+	if (*s == 0)
+		return (0);
+	if (*s == '-')
+		neg = 0;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s <= '9' && *s >= '0')
+		nb = (nb * 10) + (*s++ - '0');
+	if (neg == 0)
+		return (-nb);
+	return (nb);
 }

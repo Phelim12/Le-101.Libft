@@ -5,8 +5,8 @@
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:19 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:19 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/01/04 17:01:59 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2018/01/04 17:01:59 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,26 +15,21 @@
 
 void	ft_putnbr(int n)
 {
-	int a;
-
-	a = 0;
 	if (n == -2147483648)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr(147483648);
-		a = 1;
+		ft_putstr("-2147483648");
+		return ;
 	}
-	if (n < 0 && a != 1)
+	if (n < 0)
 	{
 		ft_putchar('-');
 		n = -n;
 	}
-	if (n >= 10 && a != 1)
+	if (n >= 10)
 	{
 		ft_putnbr(n / 10);
 		ft_putchar(n % 10 + '0');
 	}
-	if (n < 10 && a != 1)
+	if (n < 10)
 		ft_putchar(n + '0');
 }

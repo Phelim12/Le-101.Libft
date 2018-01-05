@@ -15,25 +15,28 @@
 
 char	*ft_itoa(int n)
 {
+	long int	s_n;
 	char		*ret;
 	int			len;
-	long int	s_n;
 
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	s_n = n;
 	len = ft_ilen(n);
-	ret = (char *)malloc(sizeof(char) * (len + 1));
+	ret = ft_strnew(len);
 	if (!ret)
 		return (0);
-	ret[len--] = '\0';
-	if (!n)
-		ret[len--] = '0';
-	s_n = ABS(s_n);
+	if (n > 0)
+		len--;
+	else if (n == 0)
+		ret[0] = '0';
+	else
+		ret[0] = '-';
+	s_n = FT_ABS(s_n);
 	while (s_n)
 	{
 		ret[len--] = (s_n % 10) + '0';
 		s_n /= 10;
 	}
-	if (n < 0)
-		ret[0] = '-';
 	return (ret);
 }
