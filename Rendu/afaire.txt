@@ -1,7 +1,3 @@
-itoa_base
-utoa_base
-imaxtoa_base
-umaxtoa_base
 ft_abs
 ft_mod
 ft_ceil
