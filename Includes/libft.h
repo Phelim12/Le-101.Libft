@@ -14,14 +14,16 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# define BUFF_SIZE 32
 # define FT_ABS(x)	(x < 0 ? -x : x)
 # define FT_NEG(x)	(x < 0 ? 1 : 0)
-# define TRUE 1
 # define FALSE 0
+# define TRUE 1
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>
+# include "ft_printf.h"
 
 /*
 **┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
@@ -177,5 +179,7 @@ char			*ft_strsub(const char *s, unsigned int start, size_t len);
 char			*ft_strnstr(const char *s, const char *to_find, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 wchar_t			*ft_wstrsub(wchar_t const *s, unsigned int start, size_t len);
+
+int				get_next_line(int const fd, char **line);
 
 #endif
