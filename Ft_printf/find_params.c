@@ -54,6 +54,7 @@ int		ft_find_number(va_list ap, char *specs, int *nbr)
 	nb = ft_strnew(32);
 	if (*specs == '*')
 	{
+		free(nb);
 		*nbr = va_arg(ap, int);
 		return (0);
 	}
