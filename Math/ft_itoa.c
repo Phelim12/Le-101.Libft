@@ -1,27 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_putchar.c                                     .::    .:/ .      .::   */
+/*   ft_itoa.c                                        .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:05:02 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:05:02 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:03:05 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:03:05 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putchar(wchar_t w)
+char	*ft_itoa(int n)
 {
-	if (w >= 0 && w <= 127)
-		return (ft_utf8_1(w, 1));
-	else if (w >= 128 && w <= 2047)
-		return (ft_utf8_2(w, 1));
-	else if (w >= 2048 && w <= 65535)
-		return (ft_utf8_3(w, 1));
-	else if (w >= 65536 && w <= 2097151)
-		return (ft_utf8_4(w, 1));
-	return (0);
+	long int	s_n;
+	char		*ret;
+	int			len;
+
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	s_n = n;
+	len = ft_ilen(n);
+	ret = ft_strnew(len + 1);
+	if (!ret)
+		return (0);
+	if (n > 0)
+		len--;
+	else if (n == 0)
+		ret[0] = '0';
+	else
+		ret[0] = '-';
+	s_n = FT_ABS(s_n);
+	while (s_n)
+	{
+		ret[len--] = (s_n % 10) + '0';
+		s_n /= 10;
+	}
+	return (ret);
 }
