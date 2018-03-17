@@ -19,7 +19,7 @@ static int	ft_read_file(char **str, int fd)
 	char	*tmp;
 	int		ret;
 
-	if (!(sample = (char *)malloc(sizeof(*sample) * (BUFF_SIZE + 1))))
+	if (!(sample = ft_strnew(BUFF_SIZE + 1)))
 		return (0);
 	ret = read(fd, sample, BUFF_SIZE);
 	if (ret > 0)
@@ -53,8 +53,11 @@ int			get_next_line(int const fd, char **line)
 			return (-1);
 	}
 	*line = ft_strsub(str, 0, ft_strlen(str) - ft_strlen(save));
+	ret = ft_strlen(save);
 	ft_strdel(&str);
 	if ((save + 1)[0] != 0)
 		str = ft_strdup(save + 1);
+	if (str)
+		str[ret - 1] = 0;
 	return (1);
 }
