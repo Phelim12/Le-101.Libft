@@ -42,7 +42,7 @@ int			get_next_line(int const fd, char **line)
 	if ((fd < 0 || line == NULL || read(fd, str, 0) < 0) ||
 	(!str && !(str = ft_strnew(0))))
 		return (-1);
-	while (!(save = ft_strchr(str, '\n')))
+	while (!(ft_strchr(str, '\n')))
 	{
 		ret = ft_read_file(&str, fd);
 		if ((ret == 0) && !(ft_strlen(str)))
@@ -52,12 +52,12 @@ int			get_next_line(int const fd, char **line)
 		if (ret < 0)
 			return (-1);
 	}
+	if (ft_strchr(str, '\n'))
+		save = ft_strdup(ft_strchr(str, '\n'));
 	*line = ft_strsub(str, 0, ft_strlen(str) - ft_strlen(save));
-	ret = ft_strlen(save);
 	ft_strdel(&str);
-	if ((save + 1)[0] != 0)
+	if (save && (save + 1)[0] != 0)
 		str = ft_strdup(save + 1);
-	if (str)
-		str[ret - 1] = 0;
+	ft_strdel(&save);
 	return (1);
 }
