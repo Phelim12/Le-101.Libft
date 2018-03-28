@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   ft_atoi.c                                        .::    .:/ .      .::   */
+/*   ft_hexatoi.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/24 22:01:26 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/24 22:01:26 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/03/26 18:38:29 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2018/03/26 18:38:29 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *s)
+int		ft_hexatoi(const char *s)
 {
-	int		nb;
-	int		neg;
+	int nb;
 
 	nb = 0;
-	neg = 1;
-	if (!s)
-		return (0);
-	while (ft_isspace(*s) && *s != 0)
+	while (*s == 32)
 		s++;
-	if (*s == 0)
-		return (0);
-	if (*s == '-')
-		neg = 0;
-	if (*s == '-' || *s == '+')
-		s++;
-	while (*s <= '9' && *s >= '0')
-		nb = (nb * 10) + (*s++ - '0');
-	if (neg == 0)
-		return (-nb);
+	if (*s == '0' && s++)
+		if (*s++ != 'x')
+			return (0);
+	while ((*s >= '0' && *s <= '9') || (*s >= 'A' && *s <= 'F')
+		|| (*s >= 'a' && *s <= 'f'))
+	{
+		if (*s >= '0' && *s <= '9')
+			nb = nb * 16 + (*s++ - '0');
+		else if (*s >= 'a' && *s <= 'f')
+			nb = nb * 16 + (*s++ - 'W');
+		else
+			nb = nb * 16 + (*s++ - '7');
+	}
 	return (nb);
 }

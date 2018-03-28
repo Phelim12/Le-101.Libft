@@ -57,7 +57,7 @@ MATH =	ft_atoi.c ft_atou.c ft_ilen.c ft_imaxlen.c ft_imaxtoa.c ft_next_sqrt.c\
 		ft_ulen.c ft_umaxlen.c ft_umaxtoa.c ft_atoimax.c ft_atoumax.c ft_utoa.c\
 		ft_ilen_base.c ft_imaxlen_base.c ft_itoa.c ft_sqrt.c ft_ulen_base.c \
 		ft_umaxlen_base.c ft_umaxtoa_base.c ft_itoa_base.c ft_imaxtoa_base.c \
-		ft_utoa.c ft_utoa_base.c ft_ceil.c ft_sort_tab_ascii.c
+		ft_utoa.c ft_utoa_base.c ft_ceil.c ft_sort_tab_ascii.c ft_hexatoi.c
 
 SRC = 	$(addprefix $(DIR_CHR), $(CHR)) $(addprefix $(DIR_GNL), $(GNL)) \
 		$(addprefix $(DIR_LST), $(LST)) $(addprefix $(DIR_STR), $(STR)) \

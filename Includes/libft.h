@@ -14,7 +14,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 32768
 # define FT_ABS(x)	(x < 0 ? -x : x)
 # define FT_NEG(x)	(x < 0 ? 1 : 0)
 # define FALSE 0
@@ -78,6 +78,7 @@ char			*ft_umaxtoa(uintmax_t n);
 char			*ft_utoa(unsigned int n);
 intmax_t		ft_atoimax(const char *s);
 uintmax_t		ft_atoumax(const char *s);
+int				ft_hexatoi(const char *s);
 void			ft_sort_tab_ascii(char ***av);
 int				ft_ilen_base(int n, int base);
 char			*ft_itoa_base(int nbr, char *base);
