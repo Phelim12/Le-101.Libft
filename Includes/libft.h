@@ -124,6 +124,7 @@ int				ft_put_uintmax_base(uintmax_t nbr, char *base);
 */
 
 void			ft_memdel(void **ap);
+void			ft_tabdel(char **tab);
 void			*ft_memalloc(size_t size);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
@@ -160,6 +161,7 @@ int				ft_strlen(const char *s);
 int				ft_wstrlen(wchar_t *wstr);
 char			*ft_strdup(const char *s);
 char			*ft_strtrim(const char *s);
+int				ft_str_is_number(const char *str);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strcpy(char *d, const char *s);

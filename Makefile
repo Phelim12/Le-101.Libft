@@ -35,7 +35,7 @@ LST =	ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstnew.c \
 		ft_lstmap.c 
 
 MEM =	ft_bzero.c ft_memset.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
-		ft_memmove.c ft_memalloc.c ft_memccpy.c
+		ft_memmove.c ft_memalloc.c ft_memccpy.c ft_tabdel.c
 
 PUT =	ft_putnbr.c ft_put_uint.c ft_putchar.c ft_putendl.c ft_putnbr_fd.c \
 		ft_putstr_fd.c ft_utf8_2.c ft_utf8_4.c ft_put_intmax.c ft_put_uintmax.c\
@@ -48,7 +48,8 @@ STR =	ft_strcat.c ft_strcmp.c ft_strdup.c ft_striteri.c ft_strlen.c \
 		ft_strchr.c ft_strcpy.c ft_strequ.c ft_strjoin.c ft_strmap.c \
 		ft_strncmp.c ft_strnew.c ft_strrev.c ft_strsub.c ft_wstrsub.c \
 		ft_strclr.c ft_strdel.c ft_striter.c ft_strlcat.c ft_strmapi.c \
-		ft_strncpy.c ft_strnstr.c ft_strsplit.c ft_strtrim.c ft_wstrlen.c
+		ft_strncpy.c ft_strnstr.c ft_strsplit.c ft_strtrim.c ft_wstrlen.c\
+		ft_str_is_number.c
 
 PRTF =	find_params.c ft_printf.c len_arg.c modify_flags.c print_arg.c \
 		print_params.c reset.c search_arg.c

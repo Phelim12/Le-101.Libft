@@ -13,6 +13,27 @@
 
 #include "libft.h"
 
+static int	ft_strdel_special(char **as)
+{
+	if (!as)
+		return (0);
+	free(*as);
+	*as = NULL;
+	return (0);
+}
+
+static char	*ft_strjoin_special(char *str)
+{
+	char *tmp;
+	char *ret;
+
+	tmp = ft_strdup(str);
+	ft_strdel(&str);
+	ret = ft_strjoin(tmp, "\n");
+	ft_strdel(&tmp);
+	return (ret);
+}
+
 static int	ft_read_file(char **str, int fd)
 {
 	char	*sample;
@@ -26,10 +47,10 @@ static int	ft_read_file(char **str, int fd)
 	{
 		sample[ret] = '\0';
 		tmp = ft_strjoin(*str, sample);
-		free(*str);
+		ft_strdel(str);
 		*str = tmp;
 	}
-	free(sample);
+	ft_strdel(&sample);
 	return (ret);
 }
 
@@ -46,9 +67,9 @@ int			get_next_line(int const fd, char **line)
 	{
 		ret = ft_read_file(&str, fd);
 		if ((ret == 0) && !(ft_strlen(str)))
-			return (0);
+			return (ft_strdel_special(&str));
 		if (ret == 0)
-			str = ft_strjoin(str, "\n");
+			str = ft_strjoin_special(str);
 		if (ret < 0)
 			return (-1);
 	}
