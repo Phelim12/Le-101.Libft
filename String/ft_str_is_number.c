@@ -20,6 +20,8 @@ int		ft_str_is_number(const char *str)
 	cur = 0;
 	if (!(ft_strchr("+-", str[cur])) && !(ft_isdigit(str[cur])))
 		return (0);
+	if (ft_strchr("+-", str[cur]) && !(ft_isdigit(str[cur + 1])))
+		return (0);
 	while (str[++cur])
 		if (!(ft_isdigit(str[cur])))
 				return (0);
