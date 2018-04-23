@@ -13,13 +13,13 @@
 
 #include "libft.h"
 
-static int	ft_strdel_special(char **as)
+static int	ft_strdel_special(char **as, int ret)
 {
 	if (!as)
-		return (0);
+		return (ret);
 	free(*as);
 	*as = NULL;
-	return (0);
+	return (ret);
 }
 
 static char	*ft_strjoin_special(char *str)
@@ -61,13 +61,13 @@ int			get_next_line(int const fd, char **line)
 	int			ret;
 
 	if ((fd < 0 || line == NULL || read(fd, str, 0) < 0) ||
-	(!str && !(str = ft_strnew(0))))
-		return (-1);
+		(!str && !(str = ft_strnew(0))))
+		return (ft_strdel_special(&str, -1));
 	while (!(ft_strchr(str, '\n')))
 	{
 		ret = ft_read_file(&str, fd);
 		if ((ret == 0) && !(ft_strlen(str)))
-			return (ft_strdel_special(&str));
+			return (ft_strdel_special(&str, 0));
 		if (ret == 0)
 			str = ft_strjoin_special(str);
 		if (ret < 0)

@@ -14,7 +14,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# define BUFF_SIZE 32768
+# define BUFF_SIZE 32
 # define FT_ABS(x)	(x < 0 ? -x : x)
 # define FT_NEG(x)	(x < 0 ? 1 : 0)
 # define FALSE 0
