@@ -24,6 +24,6 @@ int		ft_str_is_number(const char *str)
 		return (0);
 	while (str[++cur])
 		if (!(ft_isdigit(str[cur])))
-				return (0);
+			return (0);
 	return (1);
 }
