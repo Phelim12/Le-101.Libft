@@ -15,21 +15,23 @@ DIR_GNL = Get_next_line/
 
 DIR_LST = Linked_list/
 
-DIR_MEM = Memory/
-
 DIR_PUT = Print/
 
 DIR_STR = String/
+
+DIR_MEM = Memory/
 
 DIR_MATH = Math/
 
 DIR_PRTF = Ft_printf/
 
+NAME_INC = ft_printf.h libft.h
+
+GNL =	get_next_line.c
+
 CHR = 	ft_isascii.c ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_islower.c \
 		ft_isprint.c ft_isspace.c ft_isupper.c ft_tolower.c ft_toupper.c \
 		ft_size_wchar.c
-
-GNL =	get_next_line.c
 
 LST =	ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstnew.c \
 		ft_lstmap.c 
@@ -64,13 +66,16 @@ SRC = 	$(addprefix $(DIR_CHR), $(CHR)) $(addprefix $(DIR_GNL), $(GNL)) \
 		$(addprefix $(DIR_LST), $(LST)) $(addprefix $(DIR_STR), $(STR)) \
 		$(addprefix $(DIR_MEM), $(MEM)) $(addprefix $(DIR_PUT), $(PUT)) \
 		$(addprefix $(DIR_MATH), $(MATH)) $(addprefix $(DIR_PRTF), $(PRTF))
+		
+
+INC = $(addprefix $(DIR_INC), $(NAME_INC))
 
 OBJ =	$(SRC:.c=.o)
 
-LEN_NAME = `printf "%s" $(NAME) |wc -c`
-DELTA =	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
 INDEX =	0
 NB = $(words $(SRC))
+LEN_NAME = `printf "%s" $(NAME) |wc -c`
+DELTA =	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
 
 all: $(NAME)
 
@@ -78,7 +83,7 @@ $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 	@printf "\r\033[0;32m✅️   make $(NAME) 100%%\033[0m\033[K\n"
 
-./%.o: ./%.c
+./%.o: ./%.c $(INC)
 	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
 	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
 	@$(eval PERCENT=$(shell echo $$(($(INDEX)*101/$(NB)))))
