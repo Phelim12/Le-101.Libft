@@ -84,6 +84,7 @@ INC =	$(addprefix $(DIR_INC), $(NAME_INC))
 OBJ =	$(SRC:.c=.o)
 
 CURSOR = 0
+
 NB_FILES = $(words $(SRC))
 
 all: $(NAME)
