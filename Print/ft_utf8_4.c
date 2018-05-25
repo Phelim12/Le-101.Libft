@@ -19,6 +19,7 @@ int	ft_utf8_4(wchar_t w, int fd)
 	int				ret;
 
 	ret = 0;
+	tmp = (unsigned char *)ft_strnew(5);
 	tmp[0] = ((w >> 18) | 240);
 	if (w >= 65536 && w <= 131071)
 		tmp[1] = (((w >> 12) ^ 32) | 128);

@@ -15,7 +15,6 @@
 
 char	*ft_umaxtoa(uintmax_t n)
 {
-	uintmax_t	s_n;
 	char		*ret;
 	int			len;
 

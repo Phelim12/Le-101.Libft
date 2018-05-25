@@ -60,6 +60,7 @@ int			get_next_line(int const fd, char **line)
 	char		*save;
 	int			ret;
 
+	save = NULL;
 	if ((fd < 0 || line == NULL || read(fd, str, 0) < 0) ||
 		(!str && !(str = ft_strnew(0))))
 		return (ft_strdel_special(&str, -1));
@@ -79,6 +80,5 @@ int			get_next_line(int const fd, char **line)
 	ft_strdel(&str);
 	if (save && (save + 1)[0] != 0)
 		str = ft_strdup(save + 1);
-	ft_strdel(&save);
-	return (1);
+	return (ft_strdel_special(&save, 1));
 }

@@ -7,13 +7,9 @@ C_FLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
-DIR_INC = Includes/
-
 DIR_CHR = Char/
 
-DIR_GNL = Get_next_line/
-
-DIR_LST = Linked_list/
+DIR_MATH = Math/
 
 DIR_PUT = Print/
 
@@ -21,9 +17,13 @@ DIR_STR = String/
 
 DIR_MEM = Memory/
 
-DIR_MATH = Math/
+DIR_INC = Includes/
 
 DIR_PRTF = Ft_printf/
+
+DIR_LST = Linked_list/
+
+DIR_GNL = Get_next_line/
 
 NAME_INC = ft_printf.h libft.h
 
@@ -53,29 +53,23 @@ STR =	ft_strcat.c ft_strcmp.c ft_strdup.c ft_striteri.c ft_strlen.c \
 		ft_strncpy.c ft_strnstr.c ft_strsplit.c ft_strtrim.c ft_wstrlen.c\
 		ft_str_is_number.c
 
-PRTF =	find_params.c ft_printf.c len_arg.c modify_flags.c print_arg.c \
-		print_params.c reset.c search_arg.c
-
 MATH =	ft_atoi.c ft_atou.c ft_ilen.c ft_imaxlen.c ft_imaxtoa.c ft_next_sqrt.c\
 		ft_ulen.c ft_umaxlen.c ft_umaxtoa.c ft_atoimax.c ft_atoumax.c ft_utoa.c\
 		ft_ilen_base.c ft_imaxlen_base.c ft_itoa.c ft_sqrt.c ft_ulen_base.c \
 		ft_umaxlen_base.c ft_umaxtoa_base.c ft_itoa_base.c ft_imaxtoa_base.c \
 		ft_utoa.c ft_utoa_base.c ft_ceil.c ft_sort_tab_ascii.c ft_hexatoi.c
 
+PRTF =	find_params.c ft_printf.c len_arg.c modify_flags.c print_arg.c \
+		print_params.c reset.c search_arg.c
+
 SRC = 	$(addprefix $(DIR_CHR), $(CHR)) $(addprefix $(DIR_GNL), $(GNL)) \
 		$(addprefix $(DIR_LST), $(LST)) $(addprefix $(DIR_STR), $(STR)) \
 		$(addprefix $(DIR_MEM), $(MEM)) $(addprefix $(DIR_PUT), $(PUT)) \
 		$(addprefix $(DIR_MATH), $(MATH)) $(addprefix $(DIR_PRTF), $(PRTF))
 		
-
-INC = $(addprefix $(DIR_INC), $(NAME_INC))
+INC =	$(addprefix $(DIR_INC), $(NAME_INC))
 
 OBJ =	$(SRC:.c=.o)
-
-INDEX =	0
-NB = $(words $(SRC))
-LEN_NAME = `printf "%s" $(NAME) |wc -c`
-DELTA =	$$(echo "$$(tput cols)-31-$(LEN_NAME)"|bc)
 
 all: $(NAME)
 
@@ -84,16 +78,10 @@ $(NAME): $(OBJ)
 	@printf "\r\033[0;32m✅️   make $(NAME) 100%%\033[0m\033[K\n"
 
 ./%.o: ./%.c $(INC)
-	@$(eval INDEX=$(shell echo $$(($(INDEX)+1))))
-	@$(eval DONE=$(shell echo $$(($(INDEX)*20/$(NB)))))
-	@$(eval PERCENT=$(shell echo $$(($(INDEX)*101/$(NB)))))
-	@$(eval TO_DO=$(shell echo $$((20-$(INDEX)*20/$(NB) - 1))))
-	@$(eval COLOR=$(shell list=(160 196 202 208 215 221 226 227 190 154 118 82 ); index=$$(($(PERCENT) * $${#list[@]} / 100)); echo "$${list[$$index]}"))
-	@printf "\r\033[38;5;%dm⌛ [%s]: %2d%% `printf '█%.0s' {0..$(DONE)}`%*s❙%*.*s\033[0m\033[K" $(COLOR) $(NAME) $(PERCENT) $(TO_DO) "" $(DELTA) $(DELTA) "$(shell echo "$@" | sed 's/^.*\///')"
-	@$(CC) $(CFLAGS) -I $(DIR_INC) -o $@ -c $< 
+	@$(CC) $(C_FLAGS) -I $(DIR_INC) -o $@ -c $< 
 
 clean:
-	@if [ -e Char/ft_isspace.c ]; \
+	@if [ -e $(OBJ) ]; \
 	then \
 		rm -rf $(OBJ); \
 		printf "\r\033[38;5;202m🗑️   clean $(NAME).\033[0m\033[K\n"; \

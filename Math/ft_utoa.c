@@ -15,7 +15,6 @@
 
 char	*ft_utoa(unsigned int n)
 {
-	unsigned int	s_n;
 	char			*ret;
 	int				len;
 
