@@ -18,8 +18,6 @@ int		ft_put_uint_base(unsigned int nbr, char *base)
 	char	*str;
 	int		ret;
 
-	if (nbr > 4294967295)
-		return (ft_putchar('0'));
 	str = ft_utoa_base(nbr, base);
 	ret = ft_putstr(str);
 	free(str);

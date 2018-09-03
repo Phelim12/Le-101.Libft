@@ -20,6 +20,7 @@
 # define FALSE 0
 # define TRUE 1
 
+# include <inttypes.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <wchar.h>
